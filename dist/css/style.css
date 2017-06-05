@@ -1,0 +1,49 @@
+body {
+    background-color: #fff;
+    color:white;
+    font-size:22px;
+    overflow:hidden;
+    margin:0px; padding:0px;
+}
+
+body * {
+    position: absolute;
+    display: block;
+    margin:0px; padding:0px;
+    background-repeat: no-repeat;
+}
+
+badGuy {
+    background-image: url(../images/badGuy.gif);
+    width:50px; height:50px;
+    background-size: cover;
+
+}
+
+donuts {
+    background-image: url(../images/donuts.gif);
+    width:90px; height:90px;
+    background-size: cover;
+
+}
+
+pizza {
+    background-image: url(../images/pizza.gif);
+    width:90px; height:90px;
+    background-size: cover;
+
+}
+
+bacon {
+    background-image: url(../images/bacon.gif-c200);
+    width:90px; height:90px;
+    background-size: cover;
+
+}
+
+background {
+    background-image: url(../images/bg.png);
+    width:100%; height: 100%;
+    /*background-size: cover;*/
+    background-repeat: repeat;
+}
