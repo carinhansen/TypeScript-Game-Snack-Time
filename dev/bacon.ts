@@ -13,6 +13,5 @@
 
        public onClick(e:MouseEvent):void{
 
-        alert('Niet op de snacks klikken!');
     }
 }

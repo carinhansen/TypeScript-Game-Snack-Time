@@ -4,7 +4,7 @@ class Ghost extends GhostObjects {
     
     
     constructor() {
-        super('badGuy', 6);
+        super('badGuy', 5);
 
         super.move();
         this.div.addEventListener("click", (e:MouseEvent) => this.onClick(e));
