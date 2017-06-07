@@ -5,26 +5,30 @@
 
 class Game {
 
-    private ghosts : Array<Ghost>;
+    private badGuys : Array<badGuy>;
     private donuts : Array<Donut>;
     private pizzas : Array<Pizza>;
     private bacons : Array<Bacon>;
+    private audio;
 
     constructor() {
 
-        this.ghosts = new Array<Ghost>();
+        this.badGuys = new Array<badGuy>();
         this.donuts = new Array<Donut>();
         this.pizzas = new Array<Pizza>();
         this.bacons = new Array<Bacon>();
 
         for (var i = 0; i < 20; i++) {
-            this.ghosts.push(new Ghost());
+            this.badGuys.push(new badGuy());
             this.donuts.push(new Donut());
             this.pizzas.push(new Pizza());
             this.bacons.push(new Bacon());
         }
 
         setTimeout(this.gameLost, 60000);
+
+        this.audio = new Audio('audio/Protofunk.mp3');
+        this.audio.play();
            
         // start de game loop        
         requestAnimationFrame( () => this.gameLoop());
@@ -32,7 +36,7 @@ class Game {
     
     private gameLoop(){
     
-        for (let g of this.ghosts) {
+        for (let g of this.badGuys) {
             g.move();
         }
 

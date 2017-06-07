@@ -1,4 +1,4 @@
-class GhostObjects {
+class gameObjects {
 
     public div : HTMLElement;
     public posX : number;
@@ -9,8 +9,8 @@ class GhostObjects {
     public width: number;
     public color: number;
 
-    constructor(GhostObjects : string, speedC :number){
-        this.div = document.createElement(GhostObjects);
+    constructor(gameObjects : string, speedC :number){
+        this.div = document.createElement(gameObjects);
         document.body.appendChild(this.div);
       
         // // start positie

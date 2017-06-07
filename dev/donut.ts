@@ -1,7 +1,7 @@
 /// <reference path="gameObjects.ts"/>
    
 
-    class Donut extends GhostObjects {
+    class Donut extends gameObjects {
     
     
     constructor() {
