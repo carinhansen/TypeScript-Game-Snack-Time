@@ -1,7 +1,7 @@
-/// <reference path="gameObjects.ts"/>
+/// <reference path="gameObject.ts"/>
    
 
-    class Bacon extends gameObjects {
+    class Bacon extends gameObject {
     
     
     constructor() {

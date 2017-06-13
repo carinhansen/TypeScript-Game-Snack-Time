@@ -8,9 +8,9 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-var GhostObjects = (function () {
-    function GhostObjects(GhostObjects, speedC) {
-        this.div = document.createElement(GhostObjects);
+var gameObject = (function () {
+    function gameObject(gameObjects, speedC) {
+        this.div = document.createElement(gameObjects);
         document.body.appendChild(this.div);
         this.posX = (Math.random() * (window.innerWidth / 2)) + (window.innerWidth / 4);
         this.posY = (Math.random() * (window.innerHeight / 2)) + (window.innerHeight / 4);
@@ -19,7 +19,7 @@ var GhostObjects = (function () {
         this.height = this.div.clientHeight;
         this.width = this.div.clientWidth;
     }
-    GhostObjects.prototype.move = function () {
+    gameObject.prototype.move = function () {
         this.posX += this.speedX;
         this.posY += this.speedY;
         if (this.posX > window.innerWidth - this.div.clientWidth || this.posX < 0) {
@@ -30,7 +30,7 @@ var GhostObjects = (function () {
         }
         this.div.style.transform = "translate(" + this.posX + "px, " + this.posY + "px)";
     };
-    return GhostObjects;
+    return gameObject;
 }());
 var Bacon = (function (_super) {
     __extends(Bacon, _super);
@@ -41,25 +41,27 @@ var Bacon = (function (_super) {
         return _this;
     }
     Bacon.prototype.onClick = function (e) {
-        alert('Niet op de snacks klikken!');
     };
     return Bacon;
-}(GhostObjects));
-var Ghost = (function (_super) {
-    __extends(Ghost, _super);
-    function Ghost() {
-        var _this = _super.call(this, 'badGuy', 6) || this;
+}(gameObject));
+var badGuy = (function (_super) {
+    __extends(badGuy, _super);
+    function badGuy() {
+        var _this = _super.call(this, 'badGuy', 2) || this;
         _super.prototype.move.call(_this);
         _this.div.addEventListener("click", function (e) { return _this.onClick(e); });
         return _this;
     }
-    Ghost.prototype.onClick = function (e) {
+    badGuy.prototype.onClick = function (e) {
+        var parent = document.getElementsByTagName("body")[0];
+        var child = document.getElementsByTagName("badGuy")[1];
+        parent.removeChild(child);
         this.color = Math.random() * 360;
         this.div.style.webkitFilter = "hue-rotate(" + this.color + "deg)";
         this.div.style.filter = "hue-rotate(" + this.color + "deg)";
     };
-    return Ghost;
-}(GhostObjects));
+    return badGuy;
+}(gameObject));
 var Donut = (function (_super) {
     __extends(Donut, _super);
     function Donut() {
@@ -72,7 +74,7 @@ var Donut = (function (_super) {
         alert('Niet op de snacks klikken!');
     };
     return Donut;
-}(GhostObjects));
+}(gameObject));
 var Pizza = (function (_super) {
     __extends(Pizza, _super);
     function Pizza() {
@@ -85,26 +87,28 @@ var Pizza = (function (_super) {
         alert('Niet op de snacks klikken!');
     };
     return Pizza;
-}(GhostObjects));
+}(gameObject));
 var Game = (function () {
     function Game() {
         var _this = this;
-        this.ghosts = new Array();
+        this.badGuys = new Array();
         this.donuts = new Array();
         this.pizzas = new Array();
         this.bacons = new Array();
         for (var i = 0; i < 20; i++) {
-            this.ghosts.push(new Ghost());
+            this.badGuys.push(new badGuy());
             this.donuts.push(new Donut());
             this.pizzas.push(new Pizza());
             this.bacons.push(new Bacon());
         }
         setTimeout(this.gameLost, 60000);
+        this.audio = new Audio('audio/Protofunk.mp3');
+        this.audio.play();
         requestAnimationFrame(function () { return _this.gameLoop(); });
     }
     Game.prototype.gameLoop = function () {
         var _this = this;
-        for (var _i = 0, _a = this.ghosts; _i < _a.length; _i++) {
+        for (var _i = 0, _a = this.badGuys; _i < _a.length; _i++) {
             var g = _a[_i];
             g.move();
         }

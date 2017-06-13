@@ -1,16 +1,22 @@
-/// <reference path="gameObjects.ts"/>
+/// <reference path="gameObject.ts"/>
 
-class badGuy extends gameObjects {
+class badGuy extends gameObject {
     
     
     constructor() {
-        super('badGuy', 5);
+        super('badGuy', 2);
 
         super.move();
         this.div.addEventListener("click", (e:MouseEvent) => this.onClick(e));
     }
 
        public onClick(e:MouseEvent):void{
+           var parent = document.getElementsByTagName("body")[0];
+
+           // dit moet het item gaan verwijderen waar op geklikt wordt
+           var child = document.getElementsByTagName("badGuy")[1];
+          
+          parent.removeChild(child);
 
         // de kleur moet random worden
         this.color = Math.random() * 360;

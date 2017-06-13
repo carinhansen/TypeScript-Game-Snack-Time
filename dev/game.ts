@@ -9,7 +9,7 @@ class Game {
     private donuts : Array<Donut>;
     private pizzas : Array<Pizza>;
     private bacons : Array<Bacon>;
-    private audio;
+    private audio : HTMLAudioElement;
 
     constructor() {
 
