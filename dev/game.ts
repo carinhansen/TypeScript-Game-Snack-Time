@@ -1,15 +1,11 @@
-/// <reference path="badGuy.ts"/>
-/// <reference path="donut.ts"/>
-/// <reference path="pizza.ts"/>
-/// <reference path="bacon.ts"/>
-
 class Game {
 
-    private badGuys : Array<badGuy>;
+    public badGuys : Array<badGuy>;
     private donuts : Array<Donut>;
     private pizzas : Array<Pizza>;
     private bacons : Array<Bacon>;
     private audio : HTMLAudioElement;
+    private end: End;
 
     constructor() {
 
@@ -56,7 +52,10 @@ class Game {
     }
 
     private gameLost() {
-        alert("Helaas! Het is je niet gelukt alle vlees etende planten binnen 1 minuut te pakken..");
+        // alert("Helaas! Het is je niet gelukt alle vlees etende planten binnen 1 minuut te pakken..");
+        let end = new End();
     }
+
+    
 
 } 

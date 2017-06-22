@@ -49,16 +49,11 @@ var badGuy = (function (_super) {
     function badGuy() {
         var _this = _super.call(this, 'badGuy', 2) || this;
         _super.prototype.move.call(_this);
-        _this.div.addEventListener("click", function (e) { return _this.onClick(e); });
+        _this.div.addEventListener("click", function () { return _this.onClick(); });
         return _this;
     }
-    badGuy.prototype.onClick = function (e) {
-        var parent = document.getElementsByTagName("body")[0];
-        var child = document.getElementsByTagName("badGuy")[1];
-        parent.removeChild(child);
-        this.color = Math.random() * 360;
-        this.div.style.webkitFilter = "hue-rotate(" + this.color + "deg)";
-        this.div.style.filter = "hue-rotate(" + this.color + "deg)";
+    badGuy.prototype.onClick = function () {
+        this.div.remove();
     };
     return badGuy;
 }(gameObject));
@@ -75,19 +70,17 @@ var Donut = (function (_super) {
     };
     return Donut;
 }(gameObject));
-var Pizza = (function (_super) {
-    __extends(Pizza, _super);
-    function Pizza() {
-        var _this = _super.call(this, 'pizza', 4) || this;
-        _super.prototype.move.call(_this);
-        _this.div.addEventListener("click", function (e) { return _this.onClick(e); });
-        return _this;
+var End = (function () {
+    function End() {
+        this.div = document.createElement("end");
+        document.body.appendChild(this.div);
+        var h = document.createElement("H1");
+        var t = document.createTextNode("Game over!");
+        h.appendChild(t);
+        document.body.appendChild(h);
     }
-    Pizza.prototype.onClick = function (e) {
-        alert('Niet op de snacks klikken!');
-    };
-    return Pizza;
-}(gameObject));
+    return End;
+}());
 var Game = (function () {
     function Game() {
         var _this = this;
@@ -127,11 +120,43 @@ var Game = (function () {
         requestAnimationFrame(function () { return _this.gameLoop(); });
     };
     Game.prototype.gameLost = function () {
-        alert("Helaas! Het is je niet gelukt alle vlees etende planten binnen 1 minuut te pakken..");
+        var end = new End();
     };
     return Game;
 }());
 window.addEventListener("load", function () {
-    new Game();
+    new Start();
 });
+var Pizza = (function (_super) {
+    __extends(Pizza, _super);
+    function Pizza() {
+        var _this = _super.call(this, 'pizza', 4) || this;
+        _super.prototype.move.call(_this);
+        _this.div.addEventListener("click", function (e) { return _this.onClick(e); });
+        return _this;
+    }
+    Pizza.prototype.onClick = function (e) {
+        alert('Niet op de snacks klikken!');
+    };
+    return Pizza;
+}(gameObject));
+var Start = (function () {
+    function Start() {
+        var _this = this;
+        this.div = document.createElement("start");
+        document.body.appendChild(this.div);
+        this.button = document.createElement("BUTTON");
+        var btnText = document.createTextNode("SPELEN");
+        console.log(this.button);
+        this.button.appendChild(btnText);
+        document.body.appendChild(this.button);
+        this.button.addEventListener("click", function () { return _this.onClick(); });
+    }
+    Start.prototype.onClick = function () {
+        this.div.remove();
+        this.button.remove();
+        new Game();
+    };
+    return Start;
+}());
 //# sourceMappingURL=main.js.map
