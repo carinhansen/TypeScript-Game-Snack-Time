@@ -2,19 +2,19 @@
 
 class badGuy extends gameObject {
 
-    public game:Game;
+    public g:Game;
     
-    constructor() {
+    constructor(game:Game) {
         super('badGuy', 2);
-
+        this.g = game;
         super.move();
         this.div.addEventListener("click", () => this.onClick());
     }
 
        public onClick(){
-        this.game.points++;
-         if(this.game.points == 2){
-            console.log('yeey');
+        this.g.points++;
+        if(this.g.points == 19){
+            new Win();
         }
         this.div.remove();
    

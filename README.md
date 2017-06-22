@@ -17,6 +17,6 @@ Bij start.ts wordt er een instance aangemaakt voor de game wanneer er op de 'spe
 Wanneer er op een snack geklikt wordt (pizza, bacon, donut) wordt er een instance gemaakt voor het eind scherm: new End();
 
 - Encapsulation
-Dit wordt in elke
+In game.ts zijn alle 
 - Composition
 - Inheritance

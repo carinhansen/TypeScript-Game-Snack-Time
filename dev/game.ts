@@ -16,7 +16,7 @@ class Game {
         this.bacons = new Array<Bacon>();
 
         for (var i = 0; i < 20; i++) {
-            this.badGuys.push(new badGuy());
+            this.badGuys.push(new badGuy(this));
             this.donuts.push(new Donut());
             this.pizzas.push(new Pizza());
             this.bacons.push(new Bacon());
@@ -48,7 +48,5 @@ class Game {
 
         // hiermee wordt de gameloop opnieuw aangeroepen
         requestAnimationFrame( () => this.gameLoop());
-
     }
-
 } 

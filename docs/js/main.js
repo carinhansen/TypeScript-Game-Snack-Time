@@ -47,16 +47,17 @@ var Bacon = (function (_super) {
 }(gameObject));
 var badGuy = (function (_super) {
     __extends(badGuy, _super);
-    function badGuy() {
+    function badGuy(game) {
         var _this = _super.call(this, 'badGuy', 2) || this;
+        _this.g = game;
         _super.prototype.move.call(_this);
         _this.div.addEventListener("click", function () { return _this.onClick(); });
         return _this;
     }
     badGuy.prototype.onClick = function () {
-        this.game.points++;
-        if (this.game.points == 2) {
-            console.log('yeey');
+        this.g.points++;
+        if (this.g.points == 19) {
+            new Win();
         }
         this.div.remove();
     };
@@ -95,7 +96,7 @@ var Game = (function () {
         this.pizzas = new Array();
         this.bacons = new Array();
         for (var i = 0; i < 20; i++) {
-            this.badGuys.push(new badGuy());
+            this.badGuys.push(new badGuy(this));
             this.donuts.push(new Donut());
             this.pizzas.push(new Pizza());
             this.bacons.push(new Bacon());
@@ -166,5 +167,16 @@ var Start = (function () {
         new Game();
     };
     return Start;
+}());
+var Win = (function () {
+    function Win() {
+        this.div = document.createElement("win");
+        document.body.appendChild(this.div);
+        var h = document.createElement("H1");
+        var t = document.createTextNode("Gewonnen!!!");
+        h.appendChild(t);
+        document.body.appendChild(h);
+    }
+    return Win;
 }());
 //# sourceMappingURL=main.js.map
