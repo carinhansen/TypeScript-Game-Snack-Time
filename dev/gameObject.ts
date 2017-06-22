@@ -1,13 +1,13 @@
 class gameObject {
 
-    public div : HTMLElement;
-    public posX : number;
-    public posY : number;
-    public speedX : number;
-    public speedY : number;
-    public height: number;
-    public width: number;
-    public color: number;
+    protected div : HTMLElement;
+    protected posX : number;
+    protected posY : number;
+    protected speedX : number;
+    protected speedY : number;
+    protected height: number;
+    protected width: number;
+    protected color: number;
 
     constructor(gameObjects : string, speedC :number){
         this.div = document.createElement(gameObjects);

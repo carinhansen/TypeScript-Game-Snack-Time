@@ -37,10 +37,11 @@ var Bacon = (function (_super) {
     function Bacon() {
         var _this = _super.call(this, 'bacon', 5) || this;
         _super.prototype.move.call(_this);
-        _this.div.addEventListener("click", function (e) { return _this.onClick(e); });
+        _this.div.addEventListener("click", function () { return _this.onClick(); });
         return _this;
     }
-    Bacon.prototype.onClick = function (e) {
+    Bacon.prototype.onClick = function () {
+        new End();
     };
     return Bacon;
 }(gameObject));
@@ -53,6 +54,10 @@ var badGuy = (function (_super) {
         return _this;
     }
     badGuy.prototype.onClick = function () {
+        this.game.points++;
+        if (this.game.points == 2) {
+            console.log('yeey');
+        }
         this.div.remove();
     };
     return badGuy;
@@ -62,11 +67,11 @@ var Donut = (function (_super) {
     function Donut() {
         var _this = _super.call(this, 'Donuts', 5) || this;
         _super.prototype.move.call(_this);
-        _this.div.addEventListener("click", function (e) { return _this.onClick(e); });
+        _this.div.addEventListener("click", function () { return _this.onClick(); });
         return _this;
     }
-    Donut.prototype.onClick = function (e) {
-        alert('Niet op de snacks klikken!');
+    Donut.prototype.onClick = function () {
+        new End();
     };
     return Donut;
 }(gameObject));
@@ -84,6 +89,7 @@ var End = (function () {
 var Game = (function () {
     function Game() {
         var _this = this;
+        this.points = 0;
         this.badGuys = new Array();
         this.donuts = new Array();
         this.pizzas = new Array();
@@ -94,7 +100,6 @@ var Game = (function () {
             this.pizzas.push(new Pizza());
             this.bacons.push(new Bacon());
         }
-        setTimeout(this.gameLost, 60000);
         this.audio = new Audio('audio/Protofunk.mp3');
         this.audio.play();
         requestAnimationFrame(function () { return _this.gameLoop(); });
@@ -119,9 +124,6 @@ var Game = (function () {
         }
         requestAnimationFrame(function () { return _this.gameLoop(); });
     };
-    Game.prototype.gameLost = function () {
-        var end = new End();
-    };
     return Game;
 }());
 window.addEventListener("load", function () {
@@ -132,14 +134,20 @@ var Pizza = (function (_super) {
     function Pizza() {
         var _this = _super.call(this, 'pizza', 4) || this;
         _super.prototype.move.call(_this);
-        _this.div.addEventListener("click", function (e) { return _this.onClick(e); });
+        _this.div.addEventListener("click", function () { return _this.onClick(); });
         return _this;
     }
-    Pizza.prototype.onClick = function (e) {
-        alert('Niet op de snacks klikken!');
+    Pizza.prototype.onClick = function () {
+        new End();
     };
     return Pizza;
 }(gameObject));
+var Score = (function () {
+    function Score() {
+        this.total = 0;
+    }
+    return Score;
+}());
 var Start = (function () {
     function Start() {
         var _this = this;

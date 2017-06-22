@@ -8,9 +8,9 @@ class Start {
     constructor(){
         this.div = document.createElement("start");
         document.body.appendChild(this.div);
-        
+
         // var h = document.createElement("H1");
-        // var t = document.createTextNode("Start");
+        // var t = document.createTextNode("Red alle snacks door op de vleesetende plant te klikken");
         // h.appendChild(t);
         // document.body.appendChild(h);
 
