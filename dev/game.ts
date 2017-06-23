@@ -1,22 +1,21 @@
 class Game {
 
-    private badGuys : Array<badGuy>;
+    private badGuys : Array<BadGuy>;
     private donuts : Array<Donut>;
     private pizzas : Array<Pizza>;
     private bacons : Array<Bacon>;
     private audio : HTMLAudioElement;
-    private end: End;
     public points : number = 0;
 
     constructor() {
 
-        this.badGuys = new Array<badGuy>();
+        this.badGuys = new Array<BadGuy>();
         this.donuts = new Array<Donut>();
         this.pizzas = new Array<Pizza>();
         this.bacons = new Array<Bacon>();
 
-        for (var i = 0; i < 20; i++) {
-            this.badGuys.push(new badGuy(this));
+        for (var i = 0; i < 10; i++) {
+            this.badGuys.push(new BadGuy(this));
             this.donuts.push(new Donut());
             this.pizzas.push(new Pizza());
             this.bacons.push(new Bacon());
@@ -28,7 +27,7 @@ class Game {
         requestAnimationFrame( () => this.gameLoop());
     }
     
-    private gameLoop(){
+    private gameLoop():void{
 
         for (let g of this.badGuys) {
             g.move();

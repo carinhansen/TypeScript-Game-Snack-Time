@@ -23,16 +23,12 @@ class gameObject {
 
         this.height = this.div.clientHeight;
         this.width = this.div.clientWidth;
-
     }
 
     public move() : void {
         this.posX += this.speedX;
         this.posY += this.speedY;
         
-        // als we buiten beeld gaan dan de snelheid omdraaien
-        // gebruik window.innerWidth en window.innerHeight om te zien of we nog in beeld zijn
-
         if(this.posX > window.innerWidth - this.div.clientWidth || this.posX < 0) {
             this.speedX = -this.speedX;
         }
@@ -41,8 +37,11 @@ class gameObject {
             this.speedY = -this.speedY;
         }
         
-        // transform gebruiken om de positie op het scherm aan te passen
         this.div.style.transform = "translate("+this.posX+"px, "+this.posY+"px)";
+    }
+
+    protected onClick():void{
+        new End();
     }
 
 }

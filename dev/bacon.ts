@@ -11,7 +11,4 @@
          this.div.addEventListener("click", () => this.onClick());
     }
 
-       private onClick():void{
-        new End();
-    }
 }

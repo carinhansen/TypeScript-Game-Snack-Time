@@ -30,6 +30,9 @@ var gameObject = (function () {
         }
         this.div.style.transform = "translate(" + this.posX + "px, " + this.posY + "px)";
     };
+    gameObject.prototype.onClick = function () {
+        new End();
+    };
     return gameObject;
 }());
 var Bacon = (function (_super) {
@@ -40,28 +43,25 @@ var Bacon = (function (_super) {
         _this.div.addEventListener("click", function () { return _this.onClick(); });
         return _this;
     }
-    Bacon.prototype.onClick = function () {
-        new End();
-    };
     return Bacon;
 }(gameObject));
-var badGuy = (function (_super) {
-    __extends(badGuy, _super);
-    function badGuy(game) {
+var BadGuy = (function (_super) {
+    __extends(BadGuy, _super);
+    function BadGuy(game) {
         var _this = _super.call(this, 'badGuy', 2) || this;
         _this.g = game;
         _super.prototype.move.call(_this);
         _this.div.addEventListener("click", function () { return _this.onClick(); });
         return _this;
     }
-    badGuy.prototype.onClick = function () {
+    BadGuy.prototype.onClick = function () {
+        this.div.remove();
         this.g.points++;
-        if (this.g.points == 19) {
+        if (this.g.points == 10) {
             new Win();
         }
-        this.div.remove();
     };
-    return badGuy;
+    return BadGuy;
 }(gameObject));
 var Donut = (function (_super) {
     __extends(Donut, _super);
@@ -71,9 +71,6 @@ var Donut = (function (_super) {
         _this.div.addEventListener("click", function () { return _this.onClick(); });
         return _this;
     }
-    Donut.prototype.onClick = function () {
-        new End();
-    };
     return Donut;
 }(gameObject));
 var End = (function () {
@@ -95,8 +92,8 @@ var Game = (function () {
         this.donuts = new Array();
         this.pizzas = new Array();
         this.bacons = new Array();
-        for (var i = 0; i < 20; i++) {
-            this.badGuys.push(new badGuy(this));
+        for (var i = 0; i < 10; i++) {
+            this.badGuys.push(new BadGuy(this));
             this.donuts.push(new Donut());
             this.pizzas.push(new Pizza());
             this.bacons.push(new Bacon());
@@ -138,17 +135,8 @@ var Pizza = (function (_super) {
         _this.div.addEventListener("click", function () { return _this.onClick(); });
         return _this;
     }
-    Pizza.prototype.onClick = function () {
-        new End();
-    };
     return Pizza;
 }(gameObject));
-var Score = (function () {
-    function Score() {
-        this.total = 0;
-    }
-    return Score;
-}());
 var Start = (function () {
     function Start() {
         var _this = this;
@@ -159,9 +147,9 @@ var Start = (function () {
         console.log(this.button);
         this.button.appendChild(btnText);
         document.body.appendChild(this.button);
-        this.button.addEventListener("click", function () { return _this.onClick(); });
+        this.button.addEventListener("click", function () { return _this.startGame(); });
     }
-    Start.prototype.onClick = function () {
+    Start.prototype.startGame = function () {
         this.div.remove();
         this.button.remove();
         new Game();

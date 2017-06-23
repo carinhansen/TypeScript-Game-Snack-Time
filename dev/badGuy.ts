@@ -1,6 +1,6 @@
 /// <reference path="gameObject.ts"/>
 
-class badGuy extends gameObject {
+class BadGuy extends gameObject {
 
     public g:Game;
     
@@ -11,15 +11,11 @@ class badGuy extends gameObject {
         this.div.addEventListener("click", () => this.onClick());
     }
 
-       public onClick(){
-        this.g.points++;
-        if(this.g.points == 19){
-            new Win();
-        }
+       protected onClick() : void{
         this.div.remove();
-   
-          
+        this.g.points++;
+        if(this.g.points == 10){
+            new Win();
+        }   
     }
-    
-    
 }
