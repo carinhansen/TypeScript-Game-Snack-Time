@@ -6,7 +6,8 @@ Het doel van de game:
 Red de snacks van de vleesetende planten door op de vleesetende planten te klikken. Als alle vleesetende planten dood (weg) zijn heb je gewonnen!
 Maar pas op dat je niet op de snacks klikt..
 
-- Classes en instances
+- <h1>Classes en instances</h1>
+
 Er zijn verschillende classes aangemaakt. Voor een start en eindscherm, voor de game en ook voor de verschillende snacks en de badguy. Ook is er een class gemaakt voor gameObject. Dat is de parent van de snacks en de badguy. Ook is er een class aangemaakt 'win'.
 
 Instances worden gebruikt in bijvoorbeeld de game. Daar worden verschillende instances aangemaakt voor de snacks en voor de badGuy. Er wordt daar een array aangemaakt:
