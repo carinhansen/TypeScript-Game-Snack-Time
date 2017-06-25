@@ -2,7 +2,8 @@
 
 https://carinhansen.github.io/inleveropdracht/
 
-<img src="/carinhansen/inleveropdracht/blob/master/docs/images/uml.png?raw=true" width="800px" height="auto" />
+[logo]: https://github.com/adam-p/markdown-here/raw/master/src/common/images/uml.png
+
 
 <h2>Het doel van de game:</h2>
 
