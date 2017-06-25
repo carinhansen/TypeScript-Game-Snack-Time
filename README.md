@@ -38,9 +38,9 @@ In badGuy is game public and onClick is protected omdat het een functie van de p
 
 - <h2>Composition</h2>
 
-Composition is gebruikt bij start en game. Start heeft namelijk een game.Game object heeft een end.
+Composition is gebruikt bij start en game. Start heeft namelijk een game.Game object heeft een end. De gameObjecten worden aangeroepen in de game.
 
 - <h2>Inheritance</h2>
 
 Inheritance is gebruikt bij gameObject en BadGuy, Pizza, Donut, Bacon.
-gameObject is de parent van BadGuy, Pizza, Donut, Bacon.
+gameObject is de parent van BadGuy, Pizza, Donut, Bacon. De childs maken gebruik van de variabelen en functies van de parent.
