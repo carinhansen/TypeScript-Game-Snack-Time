@@ -3,7 +3,7 @@
 https://carinhansen.github.io/inleveropdracht/
 
 
-[logo]: https://github.com/carinhansen/inleveropdracht/blob/master/docs/images/uml.png "uml"
+[logo]: https://github.com/carinhansen/inleveropdracht/blob/master/docs/images/new-uml.png "uml"
 ![alt text][logo]
 
 <h2>Het doel van de game:</h2>
