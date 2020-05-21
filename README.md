@@ -1,4 +1,4 @@
-# inleveropdracht
+# TypeScript Game - Snack Time 
 
 https://carinhansen.github.io/inleveropdracht/
 
