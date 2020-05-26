@@ -1,6 +1,8 @@
 # TypeScript Game - Snack Time 
 
-https://carinhansen.github.io/inleveropdracht/
+https://carinhansen.github.io/TypeScript-Game-Snack-Time
+
+2e jaars school opdracht - TypeScript game
 
 
 [logo]: https://github.com/carinhansen/inleveropdracht/blob/master/docs/images/new-uml.png "uml"
